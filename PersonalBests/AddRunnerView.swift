@@ -7,11 +7,9 @@ class AddRunnerView: UIView, UITextFieldDelegate {
         var name = UITextField()
         var pbLabel = UILabel()
         var pb = UITextField()
-        var yobLabel = UILabel()
-        var yob = UITextField()
         var scrollView = UIScrollView()
         var textFields: [UITextField] {
-            return [name,pb,yob]
+            return [name,pb]
         }
         
         override init(frame: CGRect) {
@@ -31,50 +29,42 @@ class AddRunnerView: UIView, UITextFieldDelegate {
             nameLabel.text = "Name: *"
             name.placeholder = "Name"
             pbLabel.text = "PersonalBest: *"
-            pb.keyboardType = .emailAddress
             pb.placeholder = "PersonalBest"
-            yobLabel.text = "YearOfbirth: *"
-            yob.keyboardType = .decimalPad
-            yob.placeholder = "YearOfbirth"
+            
             
             setFieldConstraints()
         }
-        
-        func setFieldConstraints() {
-            nameLabel.anchor(top: scrollView.topAnchor, bottom: nil, left: scrollView.leftAnchor, right: nil)
-            name.anchor(top: scrollView.topAnchor, bottom: nil, left: nameLabel.rightAnchor, right: nil)
-            pbLabel.anchor(top: nameLabel.bottomAnchor, bottom: nil, left: scrollView.leftAnchor, right: nil)
-            pb.anchor(top: name.bottomAnchor, bottom: nil, left: pbLabel.rightAnchor, right: nil)
-            yobLabel.anchor(top: pbLabel.bottomAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: nil)
-            yob.anchor(top: pb.bottomAnchor, bottom: scrollView.bottomAnchor, left: yobLabel.rightAnchor, right: nil)
-        }
-        
-        func setupScrollView() {
-            self.addSubview(scrollView)
-            scrollView.addSubview(nameLabel)
-            scrollView.addSubview(name)
-            scrollView.addSubview(pbLabel)
-            scrollView.addSubview(pb)
-            scrollView.addSubview(yobLabel)
-            scrollView.addSubview(yob)
-            scrollView.contentSize.height = 2000
-            scrollView.anchor(top: self.topAnchor, bottom: self.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor)
-        }
-        
-        @objc func dismissKeyboard() {
-            self.endEditing(true)
-        }
-        
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            if let selectedTextFieldIndex = textFields.firstIndex(of: textField), selectedTextFieldIndex < textFields.count - 1 {
-                textFields[selectedTextFieldIndex + 1].becomeFirstResponder()
-            } else {
-                textField.resignFirstResponder()
+      func setFieldConstraints() {
+                nameLabel.anchor(top: scrollView.topAnchor, bottom: nil, left: scrollView.leftAnchor, right: nil)
+                name.anchor(top: scrollView.topAnchor, bottom: nil, left: nameLabel.rightAnchor, right: nil)
+                pbLabel.anchor(top: nameLabel.bottomAnchor, bottom: scrollView.bottomAnchor, left: scrollView.leftAnchor, right: nil)
+                pb.anchor(top: name.bottomAnchor, bottom: scrollView.bottomAnchor, left: pbLabel.rightAnchor, right: nil)
             }
-            return true
+            
+            func setupScrollView() {
+                self.addSubview(scrollView)
+                scrollView.addSubview(nameLabel)
+                scrollView.addSubview(name)
+                scrollView.addSubview(pbLabel)
+                scrollView.addSubview(pb)
+                scrollView.contentSize.height = 2000
+                scrollView.anchor(top: self.topAnchor, bottom: self.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor)
+            }
+            
+            @objc func dismissKeyboard() {
+                self.endEditing(true)
+            }
+            
+            func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+                if let selectedTextFieldIndex = textFields.firstIndex(of: textField), selectedTextFieldIndex < textFields.count - 1 {
+                    textFields[selectedTextFieldIndex + 1].becomeFirstResponder()
+                } else {
+                    textField.resignFirstResponder()
+                }
+                return true
+            }
+            
         }
-        
-    }
 
     extension UIView {
     func anchor(top: NSLayoutYAxisAnchor?, bottom: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, right: NSLayoutXAxisAnchor?) {

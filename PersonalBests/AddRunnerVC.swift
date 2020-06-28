@@ -21,8 +21,7 @@ class AddRunnerVC: UIViewController {
         func isEditMode() {
             if(runner.id != nil) {
                 addrunnerview.name.text = runner.name
-                addrunnerview.pb.text = runner.pb
-                addrunnerview.yob.text = String(runner.yob ?? 0.0)
+                addrunnerview.pb.text = String(runner.pb ?? 0.0)
                 navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(updateRunner))
             } else {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(createRunner))
@@ -77,22 +76,14 @@ class AddRunnerVC: UIViewController {
             runner.name = addrunnerview.name.text
             if(addrunnerview.pb.text!.isEmpty) {
                 showAlert(withTitle: "Failed to add Runner",
-                    withMessage: "PersonalBesy is required.",
+                    withMessage: "PersonalBest is required.",
                     parentController: self,
                     okBlock: {},
                     cancelBlock: nil)
                 return false
             }
-            runner.pb = addrunnerview.pb.text
-            if(addrunnerview.yob.text!.isEmpty) {
-                showAlert(withTitle: "Failed to add Runner",
-                    withMessage: "Year of birth is required.",
-                    parentController: self,
-                    okBlock: {},
-                    cancelBlock: nil)
-                return false
-            }
-            runner.yob = Double(addrunnerview.yob.text ?? "0.0")
+            runner.pb = Double(addrunnerview.pb.text ?? "0.0")
+           
             return true
         }
         

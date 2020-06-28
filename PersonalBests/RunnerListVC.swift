@@ -3,7 +3,7 @@ import UIKit
 class RunnerListVC: UIViewController {
     
     var runnerTable = UITableView()
-    var runnerservice = RunnerService()
+    var runnerService = RunnerService()
     var runners: [Runner] = []
     
     var searchBar = UISearchBar()
@@ -13,7 +13,7 @@ class RunnerListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Runners"
+        navigationItem.title = "Runner"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(create))
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reloadNotification"), object: nil)
         self.setupSearchBar()
@@ -31,13 +31,13 @@ class RunnerListVC: UIViewController {
     }
     
     @objc func create() {
-        let addRunnnerVC = AddRunnerVC()
-        addRunnnerVC.title = "Add Runner"
-        self.navigationController?.pushViewController(addRunnnerVC, animated: true)
+        let addRunnerVC = AddRunnerVC()
+        addRunnerVC.title = "Add Runner"
+        self.navigationController?.pushViewController(addRunnerVC, animated: true)
     }
     
     func getAllRunners() {
-        runnerservice.getAllRunners() { (res) in
+        runnerService.getAllRunners() { (res) in
             switch res {
             case .success(let runners):
                 self.runners = runners
@@ -53,7 +53,7 @@ class RunnerListVC: UIViewController {
     }
     
     func deleteRunner(id: Int) {
-        runnerservice.deleteRunner(id: id) { (res) in
+        runnerService.deleteRunner(id: id) { (res) in
             switch res {
             case .success(_):
                 self.getAllRunners()
@@ -80,7 +80,7 @@ class RunnerListVC: UIViewController {
         setRunnerTableDelegates()
         runnerTable.frame = self.view.frame
         runnerTable.rowHeight = UITableView.automaticDimension
-        runnerTable.register(RunnerCell.self, forCellReuseIdentifier: "RunnnerCell")
+        runnerTable.register(RunnerCell.self, forCellReuseIdentifier: "RunnerCell")
         runnerTable.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         runnerTable.anchor(top: searchBar.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
@@ -118,8 +118,8 @@ extension RunnerListVC: UITableViewDataSource, UITableViewDelegate, UISearchBarD
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Delete", handler: { (action, view, success) in
-            let runnerID = self.runners[indexPath.row].id
-            self.deleteRunner(id: runnerID ?? 0)
+            let runnerId = self.runners[indexPath.row].id
+            self.deleteRunner(id: runnerId ?? 0)
         })
         return UISwipeActionsConfiguration(actions: [delete])
     }

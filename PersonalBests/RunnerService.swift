@@ -4,7 +4,7 @@ import UIKit
 import Alamofire
 class RunnerService {
 
-   var url = "http://127.0.0.1:8080/runner/"
+   var url = "http://127.0.0.1:8080/runners/"
 
     func getAllRunners(completion: @escaping (Result<[Runner], Error>) -> ()) {
             var request = URLRequest(url: URL(string: url)!)
