@@ -54,6 +54,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A12252E24E9AAA700F6EA46 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7A9BDA99249CFE23004A52ED /* RunnerService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		7A12252F24E9AAB500F6EA46 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A9BDA91249CEEB3004A52ED /* Runner.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A12253024E9AAC400F6EA46 /* Cell + TableView */ = {
+			isa = PBXGroup;
+			children = (
+				7A9BDA93249CEF62004A52ED /* RunnerCell.swift */,
+				7A45A444249D6F350010C5F1 /* RunnerListVC.swift */,
+			);
+			path = "Cell + TableView";
+			sourceTree = "<group>";
+		};
+		7A12253124E9ABA700F6EA46 /* View + AddRunnerVC */ = {
+			isa = PBXGroup;
+			children = (
+				7A9BDA95249CF3DB004A52ED /* AddRunnerView.swift */,
+				7A9BDA97249CF725004A52ED /* AddRunnerVC.swift */,
+			);
+			path = "View + AddRunnerVC";
+			sourceTree = "<group>";
+		};
 		7AB5D121249CEC3200B37D52 = {
 			isa = PBXGroup;
 			children = (
@@ -75,19 +109,17 @@
 		7AB5D12C249CEC3200B37D52 /* PersonalBests */ = {
 			isa = PBXGroup;
 			children = (
+				7A12253124E9ABA700F6EA46 /* View + AddRunnerVC */,
+				7A12253024E9AAC400F6EA46 /* Cell + TableView */,
+				7A12252F24E9AAB500F6EA46 /* Model */,
+				7A12252E24E9AAA700F6EA46 /* Service */,
 				7AB5D12D249CEC3200B37D52 /* AppDelegate.swift */,
 				7A9BDA8F249CEDDA004A52ED /* HomeVC.swift */,
-				7AB5D12F249CEC3200B37D52 /* SceneDelegate.swift */,
 				7AB5D131249CEC3200B37D52 /* TabBarVC.swift */,
+				7AB5D12F249CEC3200B37D52 /* SceneDelegate.swift */,
 				7AB5D136249CEC3400B37D52 /* Assets.xcassets */,
 				7AB5D138249CEC3400B37D52 /* LaunchScreen.storyboard */,
 				7AB5D13B249CEC3400B37D52 /* Info.plist */,
-				7A9BDA91249CEEB3004A52ED /* Runner.swift */,
-				7A9BDA93249CEF62004A52ED /* RunnerCell.swift */,
-				7A9BDA95249CF3DB004A52ED /* AddRunnerView.swift */,
-				7A9BDA97249CF725004A52ED /* AddRunnerVC.swift */,
-				7A9BDA99249CFE23004A52ED /* RunnerService.swift */,
-				7A45A444249D6F350010C5F1 /* RunnerListVC.swift */,
 			);
 			path = PersonalBests;
 			sourceTree = "<group>";
