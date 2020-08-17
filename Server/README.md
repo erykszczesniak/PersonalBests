@@ -1,5 +1,5 @@
-Backed Service using Spring Boot connected with an iOS app wrote in Swift using Alamofire - 
-Client side code - https://github.com/erykszczesniak/PersonalBests
+Backed Service using Spring Boot, Hibernate and JUnit for testing connected with an iOS app wrote in Swift using Alamofire - 
+Client side code - https://github.com/erykszczesniak/PersonalBests. 
 
 
 ![Zrzut ekranu 2020-06-28 o 14 14 54](https://user-images.githubusercontent.com/64661383/85948698-8bac4080-b952-11ea-97af-6a0c00cf16c9.png)
